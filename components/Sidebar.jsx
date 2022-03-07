@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import {
 	HomeIcon,
 	SearchIcon,
 	LibraryIcon,
 	PlusCircleIcon,
-	RssIcon,
-	HeartIcon
+	RssIcon
 } from '@heroicons/react/outline';
+import { HeartIcon } from '@heroicons/react/solid';
 import { useRecoilState } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
 import playlistIdState from '../atoms/playlistAtom';
@@ -30,13 +30,9 @@ const Sidebar = () => {
 
   return (
 		<div 
-			className="text-gray-500 p-5 text-xs lg:text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex"
+			className="text-gray-500 p-5 text-xs lg:text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-36"
 		>
-			<div className="space-y-4">	
-				<button className="flex items-center space-x-2 hover:text-white" onClick={() => signOut()}>
-					{/* <HomeIcon className="h-5 w-5" /> */}
-					<p>Log out</p>
-				</button>			
+			<div className="space-y-4">
 				<button className="flex items-center space-x-2 hover:text-white">
 					<HomeIcon className="h-5 w-5" />
 					<p>Home</p>
@@ -54,11 +50,11 @@ const Sidebar = () => {
 					<PlusCircleIcon className="h-5 w-5" />
 					<p>Create Playlist</p>
 				</button>
-				<button className="flex items-center space-x-2 hover:text-white">
+				<button className="flex items-center text-blue-500 space-x-2 hover:text-white">
 					<HeartIcon className="h-5 w-5" />
 					<p>Liked Songs</p>
 				</button>
-				<button className="flex items-center space-x-2 hover:text-white">
+				<button className="flex items-center text-green-500 space-x-2 hover:text-white">
 					<RssIcon className="h-5 w-5" />
 					<p>Your Episodes</p>
 				</button>

@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useRecoilState } from 'recoil';
 import { debounce } from 'lodash';
 import { currentTrackIdState, isPlayingState } from '../atoms/songAtom';
@@ -75,7 +75,7 @@ const Player = () => {
 			className="h-24 bg-gradient-to-b from-black to-gray-900 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8"
 		>
 			<div className="flex items-center space-x-4">
-				<img className="hidden md:inline w-10 h-10" src={songInfo?.album.images?.[0]?.url} alt="" />
+				<img className="hidden md:inline w-10 h-10" src={songInfo?.album?.images?.[0]?.url} alt="" />
 				<div>
 					<h3>{songInfo?.name}</h3>
 					<p>{songInfo?.artist?.[0]?.name}</p>

@@ -5,14 +5,14 @@ import useSpotify from './useSpotify';
 
 function useSongInfo() {
 	const spotifyApi = useSpotify();
-	const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
+	const [currentIdTrack, setCurrentIdTrack] = useRecoilState(currentTrackIdState);
 	const [songInfo, setSongInfo] = useState(null);
 
 	useEffect(() => {
 		const fetchSongInfo = async () => {
-			if (currentTrackId) {
+			if (currentIdTrack) {
 				const trackInfo = await fetch(
-					`http://api.spotify.com/v1/tracks/${currentTrackId}`, {
+					`https://api.spotify.com/v1/tracks/${currentIdTrack}`, {
 						headers: {
 							Authorization: `Bearer ${spotifyApi.getAccessToken()}`,
 						}
@@ -24,7 +24,7 @@ function useSongInfo() {
 		}
 
 		fetchSongInfo();
-	}, [currentTrackId, spotifyApi])
+	}, [currentIdTrack, spotifyApi])
 
 	return songInfo;
 }

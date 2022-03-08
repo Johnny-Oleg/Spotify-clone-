@@ -8,9 +8,10 @@ import {
 	RssIcon
 } from '@heroicons/react/outline';
 import { HeartIcon } from '@heroicons/react/solid';
+import { BsSpotify } from 'react-icons/bs';
 import { useRecoilState } from 'recoil';
 import useSpotify from '../hooks/useSpotify';
-import playlistIdState from '../atoms/playlistAtom';
+import { playlistIdState } from '../atoms/playlistAtom';
 
 const Sidebar = () => {
 	const { data: session, status } = useSession();
@@ -33,6 +34,10 @@ const Sidebar = () => {
 			className="text-gray-500 p-5 text-xs lg:text-sm border-r border-gray-900 overflow-y-scroll scrollbar-hide h-screen sm:max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-36"
 		>
 			<div className="space-y-4">
+				<button className="flex items-center space-x-2 text-white text-2xl">
+					<BsSpotify className="h-10 w-10" />
+					<h3>Spotify</h3>
+				</button>
 				<button className="flex items-center space-x-2 hover:text-white">
 					<HomeIcon className="h-5 w-5" />
 					<p>Home</p>
@@ -63,8 +68,9 @@ const Sidebar = () => {
 					<p 
 						className="cursor-pointer hover:text-white"
 						onClick={() => setPlaylistId(playlist.id)}
+						key={playlist.id}
 					>
-							{playlist.name}
+						{playlist.name}
 					</p>
 				))}
 			</div>
